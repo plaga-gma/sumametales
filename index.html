@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descargar SumaMetales</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --accent-color: #00f0ff;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 50% 100%, rgba(138, 43, 226, 0.1) 0%, transparent 60%);
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 24px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            background: linear-gradient(135deg, var(--accent-color), #00a8ff);
+            color: #000;
+            text-decoration: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 240, 255, 0.4);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 240, 255, 0.6);
+        }
+
+        .btn-download:active {
+            transform: translateY(2px) scale(0.98);
+        }
+
+        .btn-download i {
+            font-size: 1.4rem;
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .feature {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .feature i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="icono.png" alt="SumaMetales Icon" class="app-icon">
+        <h1>SumaMetales</h1>
+        <p>La herramienta definitiva para calcular las cargas y pesadas de metales en tu depósito, de forma rápida y sin conexión.</p>
+        
+        <!-- Enlace de descarga directa -->
+        <a href="SumaMetales.apk" download="SumaMetales.apk" class="btn-download" id="download-btn">
+            <i class="fa-brands fa-android"></i>
+            Descargar APK
+        </a>
+
+        <div class="features">
+            <div class="feature">
+                <i class="fa-solid fa-bolt"></i>
+                <span>Rápida</span>
+            </div>
+            <div class="feature">
+                <i class="fa-solid fa-wifi"></i>
+                <span>Offline</span>
+            </div>
+            <div class="feature">
+                <i class="fa-solid fa-scale-balanced"></i>
+                <span>Exacta</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script para iniciar la descarga automáticamente (Opcional, pero muy útil si se escanea un QR) -->
+    <script>
+        // Check if the URL has ?auto=1 to trigger automatic download
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('auto')) {
+            setTimeout(() => {
+                document.getElementById('download-btn').click();
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
